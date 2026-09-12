@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  timetable-app:
+    build: .
+    container_name: timetable-production
+    restart: always
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    environment:
+      - PORT=5000
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    volumes:
+      - ./timetable.db:/app/timetable.db
